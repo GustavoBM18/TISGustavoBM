@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root{
+      --bg:#0b1220; /* azul muy oscuro */
+      --card:#121a2b;
+      --muted:#8aa0c3;
+      --text:#e7ecf5;
+      --accent:#4ea1ff;
+      --accent-2:#79f2d0;
+      --border:#24324f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header{
+      position: sticky; top:0; z-index: 100;
+      background: rgba(11,18,32,.8); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap{max-width:1100px; margin-inline:auto; padding: 18px 20px}
+    nav{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content: space-between;
+    }
+    .brand{font-weight:700; letter-spacing:.3px}
+    .navlinks{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border:1px solid var(--border); border-radius:999px; text-decoration:none; color:var(--text);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    main{padding:28px 20px}
+    h1{font-size: clamp(24px, 3.5vw, 40px); line-height: 1.05; margin: 10px 0 6px}
+    p.lead{color: var(--muted); max-width: 72ch}
+
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top:22px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 18px; box-shadow: 0 10px 24px rgba(0,0,0,.15);
+    }
+    .card h2{font-size: clamp(18px, 2.4vw, 24px); margin:0 0 10px}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--border); color: var(--muted)}
+
+    section{scroll-margin-top: 90px}
+    .fields{display:grid; gap:8px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-top:12px}
+    .field{
+      padding:10px 12px; border:1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size:14px
+    }
+    details{border:1px solid var(--border); border-radius:14px; padding:10px 12px; background: rgba(255,255,255,.02)}
+    details summary{cursor:pointer; font-weight:600}
+    ul{margin:10px 0 0 18px}
+
+    .desc{color: var(--muted); font-size: 14px; margin-top: 8px}
+    .foot{margin-top: 26px; color: var(--muted); font-size: 13px}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; padding:2px 6px; border:1px solid var(--border); border-radius:6px; background: rgba(255,255,255,.04)}
+
+    .anchor{display:inline-block; margin-top: 22px; color: var(--accent); text-decoration:none}
+    .anchor:hover{text-decoration:underline}
+
+    footer{border-top:1px solid var(--border); margin-top:40px; background: rgba(255,255,255,.02)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">🏨 Sistema de Gestión Hotelera</div>
+        <div class="navlinks">
+          <a class="chip" href="#inventario">Inventario</a>
+          <a class="chip" href="#proveedor">Proveedores</a>
+          <a class="chip" href="#horario">Horarios</a>
+          <a class="chip" href="#reservaciones">Reservaciones</a>
+          <a class="chip" href="#habitaciones">Habitaciones</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Panel funcional de gestión hotelera</h1>
+
+    <!-- INVENTARIO -->
+    <section id="inventario">
+      <div class="card">
+        <h2>Inventario</h2>
+        <p class="desc">Diseñar y desarrollar una tabla en una base de datos que permita gestionar la información de productos del hotel, facilitando al gerente y al empleado la administración del inventario según sus respectivos niveles de acceso. El sistema permitirá al gerente añadir, visualizar, editar y eliminar información de productos, mientras que el empleado podrá añadir nuevos productos y consultar la información registrada, contribuyendo así a un control más eficiente del material operativo del hotel.</p>
+        <span class="pill">Entidad</span>
+        <div class="fields">
+          <div class="field">Id producto</div>
+          <div class="field">Descripción</div>
+          <div class="field">Nombre del producto</div>
+          <div class="field">Cantidad del producto</div>
+          <div class="field">Precio de compra</div>
+          <div class="field">Precio de venta</div>
+          <div class="field">Caducidad</div>
+          <div class="field">Marca</div>
+          <div class="field">Proveedor</div>
+        </div>
+        <details>
+          <summary>Permisos por rol</summary>
+          <ul>
+            <li><strong>Gerente</strong>: Añadir, visualizar, editar y eliminar información de productos.</li>
+            <li><strong>Empleado</strong>: Añadir nuevo producto y visualizar toda la información.</li>
+          </ul>
+        </details>
+        <a class="anchor" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+    <!-- PROVEEDOR -->
+    <section id="proveedor">
+      <div class="card">
+        <h2>Proveedor</h2>
+        <p class="desc">Diseñar y desarrollar una tabla dentro de la base de datos que permita al gerente gestionar la información de los proveedores del hotel. Esta funcionalidad le permitirá agregar nuevos proveedores, visualizar la información de los productos asociados, así como editar y eliminar los datos de los proveedores, con el fin de mantener actualizado el registro de abastecedores y asegurar una gestión eficiente de la cadena de suministro en el entorno operativo del hotel.</p>
+        <span class="pill">Entidad</span>
+        <div class="fields">
+          <div class="field">Id proveedor</div>
+          <div class="field">Primer nombre</div>
+          <div class="field">Segundo apellido</div>
+          <div class="field">Apellido paterno</div>
+          <div class="field">Apellido materno</div>
+          <div class="field">Teléfono</div>
+          <div class="field">Correo electrónico</div>
+          <div class="field">Lista de productos</div>
+          <div class="field">Identificación</div>
+          <div class="field">RFC</div>
+          <div class="field">Id producto</div>
+        </div>
+        <details>
+          <summary>Permisos por rol</summary>
+          <ul>
+            <li><strong>Gerente</strong>: Agregar, visualizar (incluyendo productos asociados), editar y eliminar proveedores.</li>
+          </ul>
+        </details>
+        <a class="anchor" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+    <!-- HORARIO -->
+    <section id="horario">
+      <div class="card">
+        <h2>Horario / Control de asistencia</h2>
+        <p class="desc">Diseñar una interfaz de control de asistencia que permita a los empleados registrar sus horarios de entrada y salida, y al gerente consultar esta información de manera eficiente, contribuyendo a una mejor supervisión del personal en el entorno hotelero.</p>
+        <span class="pill">Entidad</span>
+        <div class="fields">
+          <div class="field">Id horario</div>
+          <div class="field">Id empleado</div>
+          <div class="field">Fecha</div>
+          <div class="field">Turno</div>
+          <div class="field">Hora de entrada</div>
+          <div class="field">Hora de salida</div>
+          <div class="field">Horas totales</div>
+        </div>
+        <details>
+          <summary>Permisos por rol</summary>
+          <ul>
+            <li><strong>Empleado</strong>: Registrar hora de llegada y salida, registrar turno, visualizar horas totales.</li>
+            <li><strong>Gerente</strong>: Visualizar entradas y salidas, editar y eliminar horarios de empleados.</li>
+          </ul>
+        </details>
+        <a class="anchor" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+    <!-- RESERVACIONES -->
+    <section id="reservaciones">
+      <div class="card">
+        <h2>Reservaciones</h2>
+        <p class="desc">Diseñar y desarrollar una tabla en la base de datos que permita gestionar las reservaciones del hotel de manera eficiente. El sistema brindará acceso tanto al gerente como al recepcionista, quienes podrán agregar, eliminar, actualizar y visualizar los datos de cada reservación, con el propósito de mantener un control preciso de las reservas, optimizar la asignación de habitaciones y mejorar la experiencia del cliente en el proceso de alojamiento.</p>
+        <span class="pill">Entidad</span>
+        <div class="fields">
+          <div class="field">Id reservación</div>
+          <div class="field">Primer nombre del huésped</div>
+          <div class="field">Segundo nombre del huésped</div>
+          <div class="field">Apellido paterno</div>
+          <div class="field">Apellido materno</div>
+          <div class="field">Número de teléfono</div>
+          <div class="field">Correo electrónico</div>
+          <div class="field">Número de huéspedes</div>
+          <div class="field">Número de noches</div>
+          <div class="field">Check-in</div>
+          <div class="field">Check-out</div>
+          <div class="field">Id de habitación</div>
+          <div class="field">Id de servicio</div>
+          <div class="field">Id estacionamiento</div>
+        </div>
+        <details>
+          <summary>Permisos por rol</summary>
+          <ul>
+            <li><strong>Recepcionista</strong>: Agregar, eliminar, actualizar y visualizar reservaciones.</li>
+            <li><strong>Gerente</strong>: Agregar, eliminar, actualizar y visualizar reservaciones.</li>
+            <li><strong>Cliente</strong>: Agendar datos para reservación y cancelar una reservación.</li>
+          </ul>
+        </details>
+        <a class="anchor" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+    <!-- HABITACIONES -->
+    <section id="habitaciones">
+      <div class="card">
+        <h2>Habitaciones</h2>
+        <p class="desc">Diseñar y desarrollar una tabla en la base de datos que permita gestionar las reservaciones del hotel de manera eficiente. El sistema brindará acceso tanto al gerente como al recepcionista, quienes podrán agregar, eliminar, actualizar y visualizar los datos de cada reservación, con el propósito de mantener un control preciso de las reservas, optimizar la asignación de habitaciones y mejorar la experiencia del cliente en el proceso de alojamiento.</p>
+        <span class="pill">Entidad</span>
+        <div class="fields">
+          <div class="field">Id de habitación</div>
+          <div class="field">Tipo de habitación</div>
+          <div class="field">Descripción</div>
+          <div class="field">Capacidad máxima</div>
+          <div class="field">Fotografías</div>
+          <div class="field">Estado de disponibilidad</div>
+          <div class="field">Precio por noche</div>
+          <div class="field">Nota adicional</div>
+        </div>
+        <details>
+          <summary>Permisos por rol</summary>
+          <ul>
+            <li><strong>Recepcionista</strong>: Visualizar y editar información de habitación.</li>
+            <li><strong>Gerente</strong>: Agregar, visualizar estado, editar y eliminar habitaciones.</li>
+          </ul>
+        </details>
+        <a class="anchor" href="#top">Volver arriba</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
