@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel – Gestión</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #1e2a38;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    .navlinks a:hover {
+      background-color: #2f3e51;
+    }
+
+    .chip {
+      background-color: #ffffff;
+      color: #1e2a38;
+      font-weight: bold;
+      border: 1px solid #ccc;
+    }
+
+    .chip:hover {
+      background-color: #f0f0f0;
+      color: #1e2a38;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navlinks {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="Inventario.html" style="color: white;">Inventario</a>
+        <a href="Horario.html" style="color: white;">Horario</a>
+        <a href="Reservaciones.html" style="color: white;">Reservaciones</a>
+        <a href="Habitaciones.html" style="color: white;">Habitaciones</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+</body>
+</html>
