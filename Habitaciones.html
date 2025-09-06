@@ -1,108 +1,238 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel – Gestión</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
   <style>
-    /* Reset básico */
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f5f5;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
     }
-
     header {
-      background-color: #1e2a38;
-      padding: 15px 0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
-
     .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
     }
-
     nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 12px;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
-
     .brand {
-      color: #ffffff;
-      font-size: 24px;
-      font-weight: bold;
+      font-weight: 700;
+      letter-spacing: .3px;
     }
-
     .navlinks {
       display: flex;
-      gap: 15px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-
-    .navlinks a {
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      font-size: 16px;
-      color: #ffffff;
-      background-color: transparent;
-      transition: background-color 0.3s ease;
-    }
-
-    .navlinks a:hover {
-      background-color: #2f3e51;
-    }
-
     .chip {
-      background-color: #ffffff;
-      color: #1e2a38;
-      font-weight: bold;
-      border: 1px solid #ccc;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
     }
-
     .chip:hover {
-      background-color: #f0f0f0;
-      color: #1e2a38;
+      background-color: rgba(255, 255, 255, 0.05);
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .navlinks {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
     }
   </style>
 </head>
-<body>
+<body id="top">
 
+  <!-- HEADER CON NAVEGACIÓN -->
 <header>
   <div class="wrap">
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
         <a href="Inventario.html" style="color: white;">Inventario</a>
-        <a href="Horario.html" style="color: white;">Horario</a>
         <a href="Reservaciones.html" style="color: white;">Reservaciones</a>
-        <a href="Habitaciones.html" style="color: white;">Habitaciones</a>
+        <a href="Horario.html" style="color: white;">Horario</a>
         <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
   </div>
 </header>
 
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Habitaciones de la Gestión Hotelera,</h1>
+    <p class="lead">Sistema de control y administración de Habitaciones, usuarios clave del hotel.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Habitaciones</h2>
+      <ul>
+        </li>En el subtema de administraciones de habitaciones del hotel, estableciendo permisos diferenciados según el rol del usuario. El sistema permitirá al gerente agregar nuevas habitaciones, visualizar su estado, editar su información y eliminarlas cuando sea necesario. Por su parte, el recepcionista podrá consultar y actualizar los datos de las habitaciones. Este control detallado contribuirá a una mejor gestión del inventario de alojamiento, facilitando la asignación y mantenimiento de las habitaciones del hotel.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+    <section class="card">
+      <h2>Usuarios en el sistema</h2>
+      <div class="fields">
+        <div class="field">Gerente</div>
+        <div class="field">Empleado</div>
+      </div>
+    </section>
+
+    <!-- FUNCIONES DEL GERENTE -->
+    <section class="card">
+      <h2>Funciones del Gerente</h2>
+      <ul>
+        <ul>
+        <li><strong>Agregar una nueva habitación</strong> utilizando:
+          <ul>
+            <li>ID de la habitación</li>
+            <li>Tipo de habitación</li>
+            <li>Capacidad máxima</li>
+            <li>Preció</li>
+          </ul>
+        <li><strong>Visualizar el estado de la habitación</strong> Utilizando: ID de la habitación.</li>
+        <li><strong>Eliminar una habitación</strong> Utilizando: ID de la habitación.</li>
+        <li><strong>Editar la información de una habitación</strong> Utilizando: ID de la habitación.</li>
+      </ul>
+    </section>
+
+    <!-- FUNCIONES DEL EMPLEADO -->
+    <section class="card">
+      <h2>Funciones del Empleado</h2>
+        <li><strong>Visualizar el estado de la habitación</strong> Utilizando: ID de la habitación.</li>
+        <li><strong>Editar la información de una habitación</strong> Utilizando: ID de la habitación.</li>
+      </ul>
+    </section>
+  <section class="card">
+  <h2>Diseño de la base de datos del subsistema</h2>
+  <div class="fields">
+    <a href="Inventario.html" class="chip">📊 Diagrama de la base de datos</a>
+    <a href="Inventario.html" class="chip">📚 Descripción de la arquitectura</a>
+    <a href="Inventario.html" class="chip">🧩 Código SQL: Crear tablas</a>
+    <a href="Inventario.html" class="chip">📝 Código SQL: Agregar registros</a>
+  </div>
+</section>
+
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
