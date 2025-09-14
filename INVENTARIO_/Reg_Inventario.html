@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="Inventario.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Registros del odigó SQL aplicado en el Inventario de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Inventario</h2>
+      <ul>
+        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+   
+
+<section class="card">
+  <h2>Registros de la tabla "Proveedor"</h2>
+  <pre><code>
+INSERT INTO Proveedor (Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Telefono, Correo_electronico, Identificación, RFC) VALUES
+('Carlos', 'Andrés', 'Pérez', 'Ramírez', '555-1234', 'carlos.perez@email.com', 'ID1001', 'RFC1001'),
+('Laura', 'Beatriz', 'Gómez', 'Fernández', '555-1235', 'laura.gomez@email.com', 'ID1002', 'RFC1002'),
+('Miguel', NULL, 'Torres', 'Salinas', '555-1236', 'miguel.torres@email.com', 'ID1003', 'RFC1003'),
+('Ana', 'Lucía', 'Rodríguez', 'Martínez', '555-1237', 'ana.rodriguez@email.com', 'ID1004', 'RFC1004'),
+('Jorge', 'Luis', 'Morales', 'Vega', '555-1238', 'jorge.morales@email.com', 'ID1005', 'RFC1005'),
+('Patricia', NULL, 'Castro', 'Delgado', '555-1239', 'patricia.castro@email.com', 'ID1006', 'RFC1006'),
+('Luis', 'Alberto', 'Ramírez', 'Suárez', '555-1240', 'luis.ramirez@email.com', 'ID1007', 'RFC1007'),
+('Sofía', 'Isabel', 'Navarro', 'Ruiz', '555-1241', 'sofia.navarro@email.com', 'ID1008', 'RFC1008'),
+('Pedro', NULL, 'Domínguez', 'Ortiz', '555-1242', 'pedro.dominguez@email.com', 'ID1009', 'RFC1009'),
+('Lucía', 'María', 'Silva', 'Ríos', '555-1243', 'lucia.silva@email.com', 'ID1010', 'RFC1010'),
+('Diego', 'Fernando', 'González', 'Hernández', '555-1244', 'diego.gonzalez@email.com', 'ID1011', 'RFC1011'),
+('Gabriela', NULL, 'Mendoza', 'Pineda', '555-1245', 'gabriela.mendoza@email.com', 'ID1012', 'RFC1012'),
+('Ricardo', 'José', 'Cruz', 'Flores', '555-1246', 'ricardo.cruz@email.com', 'ID1013', 'RFC1013'),
+('Elena', 'Beatriz', 'Ramos', 'Castillo', '555-1247', 'elena.ramos@email.com', 'ID1014', 'RFC1014'),
+('Manuel', NULL, 'Ortega', 'Arias', '555-1248', 'manuel.ortega@email.com', 'ID1015', 'RFC1015'),
+('Carmen', 'Teresa', 'León', 'Sánchez', '555-1249', 'carmen.leon@email.com', 'ID1016', 'RFC1016'),
+('Andrés', 'Felipe', 'Peña', 'Guerra', '555-1250', 'andres.pena@email.com', 'ID1017', 'RFC1017'),
+('Natalia', NULL, 'Herrera', 'Reyes', '555-1251', 'natalia.herrera@email.com', 'ID1018', 'RFC1018'),
+('Felipe', 'Antonio', 'Vargas', 'Acosta', '555-1252', 'felipe.vargas@email.com', 'ID1019', 'RFC1019'),
+('Verónica', 'Susana', 'López', 'Camacho', '555-1253', 'veronica.lopez@email.com', 'ID1020', 'RFC1020');
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+      <p class="lead">SELECT * FROM Proveedor;</p>
+      <img src="/Imagenes/Registro_provedor.png" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+
+<section class="card">
+  <h2>Registro de la tabla "Inventario"</h2>
+  <pre><code>
+INSERT INTO Inventario (Descripcion, Nombre_Producto, Cantidad_de_producto, Peso_del_producto, Precio_de_venta, Caducidad, Marca) VALUES
+('Leche entera 1L', 'Leche', 120, 1.00, 20.50, '2025-12-31', 'Lala'),
+('Pan integral 680g', 'Pan Integral', 80, 0.68, 25.00, '2025-10-15', 'Bimbo'),
+('Cereal de avena 500g', 'Cereal', 60, 0.50, 35.75, '2026-01-10', 'Kellogg''s'),
+('Arroz blanco 1kg', 'Arroz', 200, 1.00, 18.90, NULL, 'La Merced'),
+('Frijol negro 1kg', 'Frijol', 150, 1.00, 22.30, NULL, 'Costeño'),
+('Aceite vegetal 900ml', 'Aceite', 90, 0.90, 45.00, '2026-03-01', 'Nutrioli'),
+('Azúcar refinada 1kg', 'Azúcar', 110, 1.00, 19.75, NULL, 'Zulka'),
+('Sal de mesa 1kg', 'Sal', 100, 1.00, 12.50, NULL, 'La Fina'),
+('Huevos blancos docena', 'Huevos', 70, 0.75, 33.00, '2025-10-05', 'San Juan'),
+('Mantequilla 250g', 'Mantequilla', 60, 0.25, 50.00, '2025-11-20', 'Gloria'),
+('Queso fresco 500g', 'Queso Fresco', 40, 0.50, 60.00, '2025-09-30', 'Los Altos'),
+('Jugo de naranja 1L', 'Jugo', 85, 1.00, 22.00, '2025-11-15', 'Del Valle'),
+('Agua embotellada 1.5L', 'Agua', 300, 1.50, 12.00, '2026-05-01', 'Bonafont'),
+('Sopa instantánea vaso', 'Sopa', 200, 0.07, 10.50, '2026-07-10', 'Maruchan'),
+('Atún en lata 140g', 'Atún', 150, 0.14, 18.00, '2026-08-15', 'Dolores'),
+('Galletas surtidas 500g', 'Galletas', 100, 0.50, 30.00, '2025-12-01', 'Gamesa'),
+('Refresco cola 2L', 'Refresco', 90, 2.00, 28.00, '2025-12-20', 'Coca-Cola'),
+('Detergente en polvo 1kg', 'Detergente', 130, 1.00, 35.00, NULL, 'Ariel'),
+('Papel higiénico 4 rollos', 'Papel Higiénico', 120, 0.80, 40.00, NULL, 'Regio'),
+('Shampoo 750ml', 'Shampoo', 60, 0.75, 55.00, '2026-06-01', 'Head & Shoulders');
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+       <p class="lead">SELECT * FROM Inventario;</p>
+      <img src="/Imagenes/MR_INVENTARIO_1.png" alt = "Registros tabla Proveedor" width="800" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+<section class="card">
+  <h2>Registro de la tabla "Detalle_Compra"</h2>
+  <pre><code>
+INSERT INTO Detalle_Compra (Id_producto, Id_proveedor, Fecha, Cantidad, Peso) VALUES
+(1, 1, '2025-09-01', 100, 100.00),
+(2, 2, '2025-09-02', 50, 34.00),
+(3, 3, '2025-09-03', 60, 30.00),
+(4, 4, '2025-09-04', 120, 120.00),
+(5, 5, '2025-09-05', 90, 90.00),
+(6, 6, '2025-09-06', 70, 63.00),
+(7, 7, '2025-09-07', 80, 80.00),
+(8, 8, '2025-09-08', 100, 100.00),
+(9, 9, '2025-09-09', 60, 45.00),
+(10, 10, '2025-09-10', 40, 10.00),
+(11, 11, '2025-09-11', 50, 25.00),
+(12, 12, '2025-09-12', 100, 100.00),
+(13, 13, '2025-09-13', 150, 225.00),
+(14, 14, '2025-09-14', 200, 14.00),
+(15, 15, '2025-09-15', 110, 15.40),
+(16, 16, '2025-09-16', 90, 18.00),
+(17, 17, '2025-09-17', 70, 140.00),
+(18, 18, '2025-09-18', 130, 130.00),
+(19, 19, '2025-09-19', 60, 48.00),
+(20, 20, '2025-09-20', 80, 60.00);
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+        <p class="lead">SELECT * FROM Detalle_Compra;</p>
+      <img src="/Imagenes/DETALLECOMPRA.png" alt="Registros tabla Proveedor" width="500" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

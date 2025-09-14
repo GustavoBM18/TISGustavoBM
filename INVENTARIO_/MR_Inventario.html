@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="Inventario.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Diagrama en la base de datos para el Inventario de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Inventario</h2>
+      <ul>
+        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+    <section class="card">
+      <h2>Diagrama de base de datos </h2>
+      <img src="/Imagenes/MR_INVENTARIO_1.png" alt="Descripción de la imagen" width="1000" height="300" style="display: block; margin: 0 auto;">
+    </section> 
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Inventario</h2>
+  <p>
+    Propósito: La tabla Inventario almacena toda la información relacionada con los productos disponibles en el sistema. Su objetivo principal es llevar un control detallado de cada producto, incluyendo sus características, cantidades disponibles, precios y fechas importantes como la caducidad. Esta información es fundamental para la gestión de stock, ventas y reposición de productos.
+  </p>
+
+  <h3>Explicación de cada campo</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id_Producto</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identificador único para cada producto. Clave primaria que permite diferenciar un producto de otro.</td>
+      </tr>
+      <tr>
+        <td>Descripcion</td>
+        <td>text</td>
+        <td>Sí</td>
+        <td>Contiene una descripción detallada del producto para facilitar su identificación y comprensión.</td>
+      </tr>
+      <tr>
+        <td>Nombre_Producto</td>
+        <td>varchar(100)</td>
+        <td>No</td>
+        <td>Nombre corto o común del producto para mostrar en listados y reportes.</td>
+      </tr>
+      <tr>
+        <td>Cantidad_de_producto</td>
+        <td>int</td>
+        <td>Sí</td>
+        <td>Cantidad actual disponible en el inventario. Fundamental para saber stock y evitar faltantes o excesos.</td>
+      </tr>
+      <tr>
+        <td>Peso_del_producto</td>
+        <td>decimal(10, 2)</td>
+        <td>Sí</td>
+        <td>Indica el peso del producto, útil para control de logística, almacenamiento y cálculo de costos.</td>
+      </tr>
+      <tr>
+        <td>Precio_de_venta</td>
+        <td>decimal(10, 2)</td>
+        <td>Sí</td>
+        <td>Precio al que se vende el producto. Necesario para calcular ingresos y para la gestión de ventas.</td>
+      </tr>
+      <tr>
+        <td>Caducidad</td>
+        <td>date</td>
+        <td>Sí</td>
+        <td>Fecha de expiración del producto (si aplica), importante para productos perecederos y para garantizar calidad.</td>
+      </tr>
+      <tr>
+        <td>Marca</td>
+        <td>varchar(50)</td>
+        <td>Sí</td>
+        <td>Marca o fabricante del producto, ayuda a diferenciar productos similares y para control de proveedores.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Detalle Compra</h2>
+  <p>
+    Propósito: La tabla Detalle Compra almacena la información detallada de cada compra realizada, registrando productos, cantidades y pesos asociados. Esto permite llevar un control preciso de cada transacción, facilitando la gestión de inventarios y el seguimiento de proveedores.
+  </p>
+
+  <h3>Explicación de cada campo</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id_compra</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identificador único para cada compra. Clave primaria que permite diferenciar una compra de otra.</td>
+      </tr>
+      <tr>
+        <td>Id_producto</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Referencia al producto comprado, permitiendo relacionar el detalle con la tabla de productos.</td>
+      </tr>
+      <tr>
+        <td>Id_proveedor</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identifica al proveedor que realizó la compra, útil para el control de proveedores y auditorías.</td>
+      </tr>
+      <tr>
+        <td>Fecha</td>
+        <td>date</td>
+        <td>Sí</td>
+        <td>Fecha en la que se realizó la compra, importante para seguimiento temporal de transacciones.</td>
+      </tr>
+      <tr>
+        <td>Cantidad</td>
+        <td>int</td>
+        <td>Sí</td>
+        <td>Cantidad de productos comprados, esencial para el control de inventario.</td>
+      </tr>
+      <tr>
+        <td>Peso</td>
+        <td>decimal(10, 2)</td>
+        <td>Sí</td>
+        <td>Peso total de los productos comprados, útil para logística y control de mercancía.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Proveedor</h2>
+  <p>
+    Propósito: La tabla Proveedor almacena la información detallada de los proveedores que suministran productos al sistema. Esto permite gestionar los datos de contacto y detalles relevantes para facilitar la comunicación y la administración de las relaciones comerciales.
+  </p>
+
+  <h3>Explicación de cada campo</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id_Proveedor</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identificador único para cada proveedor. Clave primaria que permite diferenciar un proveedor de otro.</td>
+      </tr>
+      <tr>
+        <td>Primer_Nombre</td>
+        <td>varchar(50)</td>
+        <td>No</td>
+        <td>Primer nombre del proveedor o contacto principal.</td>
+      </tr>
+      <tr>
+        <td>Segundo_Nombre</td>
+        <td>varchar(50)</td>
+        <td>Sí</td>
+        <td>Segundo nombre del proveedor o contacto, si aplica.</td>
+      </tr>
+      <tr>
+        <td>Primer_Apellido</td>
+        <td>varchar(50)</td>
+        <td>No</td>
+        <td>Primer apellido del proveedor o contacto principal.</td>
+      </tr>
+      <tr>
+        <td>Segundo_Apellido</td>
+        <td>varchar(50)</td>
+        <td>Sí</td>
+        <td>Segundo apellido del proveedor o contacto, si aplica.</td>
+      </tr>
+      <tr>
+        <td>Telefono</td>
+        <td>varchar(20)</td>
+        <td>Sí</td>
+        <td>Número de teléfono para contacto directo con el proveedor.</td>
+      </tr>
+      <tr>
+        <td>Correo_electronico</td>
+        <td>varchar(100)</td>
+        <td>Sí</td>
+        <td>Correo electrónico para comunicación y notificaciones.</td>
+      </tr>
+      <tr>
+        <td>Identificación</td>
+        <td>varchar(30)</td>
+        <td>Sí</td>
+        <td>Documento o número de identificación del proveedor para fines legales o administrativos.</td>
+      </tr>
+      <tr>
+        <td>RFC</td>
+        <td>varchar(20)</td>
+        <td>No</td>
+        <td>Registro Federal de Contribuyentes del proveedor, importante para facturación y control fiscal.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

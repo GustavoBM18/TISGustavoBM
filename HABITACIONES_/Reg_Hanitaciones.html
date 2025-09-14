@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel – Gestión (Inventario, Proveedores, Horarios, Reservaciones, Habitaciones)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #8aa0c3;
+      --text: #e7ecf5;
+      --accent: #4ea1ff;
+      --accent-2: #79f2d0;
+      --border: #24324f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(78,161,255,.25), transparent 60%),
+                  radial-gradient(1000px 700px at 0% 110%, rgba(121,242,208,.2), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,18,32,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding: 18px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      transition: background 0.3s;
+    }
+    .chip:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    main {
+      padding: 28px 20px;
+    }
+    h1 {
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.05;
+      margin: 10px 0 6px;
+    }
+    p.lead {
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.15);
+      margin-top: 22px;
+    }
+    .card h2 {
+      font-size: clamp(18px, 2.4vw, 24px);
+      margin: 0 0 10px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    section {
+      scroll-margin-top: 90px;
+    }
+    .fields {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .field {
+      padding: 10px 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .anchor {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .anchor:hover {
+      text-decoration: underline;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      background: rgba(255,255,255,.02);
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- HEADER CON NAVEGACIÓN -->
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Hotel – Gestión</div>
+      <div class="navlinks">
+        <a href="../HABITACIONES_/Habitaciones.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="wrap">
+    <h1>Registros del odigó SQL aplicado en las habitaciones de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <!-- DESCRIPCIÓN DEL SISTEMA -->
+    <section class="card">
+      <h2>Inventario</h2>
+      <ul>
+        </li>En el subtema de administraciones de habitaciones del hotel, estableciendo permisos diferenciados según el rol del usuario. El sistema permitirá al gerente agregar nuevas habitaciones, visualizar su estado, editar su información y eliminarlas cuando sea necesario. Por su parte, el recepcionista podrá consultar y actualizar los datos de las habitaciones. Este control detallado contribuirá a una mejor gestión del inventario de alojamiento, facilitando la asignación y mantenimiento de las habitaciones del hotel.</li>
+      </ul>
+    </section>
+
+    <!-- USUARIOS DEL SISTEMA -->
+   
+
+<section class="card">
+  <h2>Registros de la tabla "Habitaciones"</h2>
+  <pre><code>
+
+INSERT INTO Habitacion (
+    tipo_habitacion,
+    descripcion,
+    capacidad_maxima,
+    fotografias,
+    estado_disponibilidad,
+    precio_por_noche,
+    nota_adicional
+) VALUES
+('Individual', 'Habitación individual con cama sencilla y escritorio.', 1, 'img/hab1.jpg', 'Disponible', 500.00, 'Ideal para viajeros solos.'),
+('Doble', 'Habitación con dos camas individuales y baño privado.', 2, 'img/hab2.jpg', 'Ocupada', 750.00, NULL),
+('Suite', 'Suite de lujo con vista al mar y jacuzzi.', 4, 'img/hab3.jpg', 'Disponible', 1800.00, 'Incluye desayuno.'),
+('Familiar', 'Habitación amplia para familias, con sofá cama.', 5, 'img/hab4.jpg', 'En limpieza', 1200.00, 'Ubicada cerca del área infantil.'),
+('Individual', 'Habitación económica, básica pero cómoda.', 1, 'img/hab5.jpg', 'Mantenimiento', 400.00, NULL),
+('Suite', 'Suite ejecutiva con minibar y TV 4K.', 3, 'img/hab6.jpg', 'Disponible', 1600.00, 'Ideal para ejecutivos.'),
+('Doble', 'Habitación doble con balcón.', 2, 'img/hab7.jpg', 'Disponible', 800.00, NULL),
+('Familiar', 'Habitación familiar con kitchenette.', 4, 'img/hab8.jpg', 'Ocupada', 1100.00, NULL),
+('Individual', 'Con aire acondicionado y escritorio de trabajo.', 1, 'img/hab9.jpg', 'Disponible', 520.00, NULL),
+('Suite', 'Suite romántica para parejas, incluye vino de cortesía.', 2, 'img/hab10.jpg', 'En limpieza', 1700.00, 'Decoración especial.'),
+('Doble', 'Con acceso directo a la piscina.', 2, 'img/hab11.jpg', 'Disponible', 950.00, NULL),
+('Individual', 'Habitación moderna con decoración minimalista.', 1, 'img/hab12.jpg', 'Ocupada', 550.00, NULL),
+('Familiar', 'Tres camas y espacio de juegos.', 5, 'img/hab13.jpg', 'Disponible', 1250.00, NULL),
+('Suite', 'Suite presidencial con sala privada.', 4, 'img/hab14.jpg', 'Mantenimiento', 2500.00, 'Requiere reserva anticipada.'),
+('Doble', 'Habitación doble con escritorio y minibar.', 2, 'img/hab15.jpg', 'Disponible', 870.00, NULL),
+('Individual', 'Cama queen, TV y WiFi gratis.', 1, 'img/hab16.jpg', 'Disponible', 600.00, NULL),
+('Familiar', 'Habitación para 6 personas, ideal para grupos.', 6, 'img/hab17.jpg', 'Ocupada', 1300.00, NULL),
+('Suite', 'Suite con terraza privada y desayuno incluido.', 3, 'img/hab18.jpg', 'Disponible', 1850.00, NULL),
+('Doble', 'Con acceso a gimnasio y spa.', 2, 'img/hab19.jpg', 'En limpieza', 980.00, NULL),
+('Individual', 'Económica y funcional, perfecta para estancias cortas.', 1, 'img/hab20.jpg', 'Disponible', 450.00, NULL),
+('Suite', 'Suite rústica con chimenea.', 3, 'img/hab21.jpg', 'Ocupada', 1900.00, 'Ambiente cálido.'),
+('Familiar', 'Habitación doble con litera para niños.', 4, 'img/hab22.jpg', 'Disponible', 1150.00, NULL),
+('Doble', 'Con ventanales grandes y mucha luz natural.', 2, 'img/hab23.jpg', 'Disponible', 900.00, NULL),
+('Individual', 'Cerca del lobby, acceso rápido.', 1, 'img/hab24.jpg', 'En limpieza', 480.00, NULL),
+('Suite', 'Suite ecológica con materiales sustentables.', 2, 'img/hab25.jpg', 'Disponible', 1700.00, NULL),
+('Familiar', 'Espaciosa, perfecta para familias numerosas.', 5, 'img/hab26.jpg', 'Ocupada', 1280.00, NULL),
+('Doble', 'Vista al jardín y baño moderno.', 2, 'img/hab27.jpg', 'Disponible', 890.00, NULL),
+('Individual', 'Ambiente tranquilo, perfecta para estudiar o trabajar.', 1, 'img/hab28.jpg', 'Disponible', 520.00, NULL),
+('Suite', 'Suite temática, ambientación japonesa.', 2, 'img/hab29.jpg', 'Disponible', 1950.00, 'Muy solicitada.'),
+('Familiar', 'Decoración alegre y área de juegos cercana.', 4, 'img/hab30.jpg', 'En limpieza', 1180.00, NULL);
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+      <p class="lead">SELECT * FROM Proveedor;</p>
+      <img src="/Imagenes/Reg_Habitacion.png" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+
+<section class="card">
+  <h2>Registro de la tabla "Inventario"</h2>
+  <pre><code>
+INSERT INTO Inventario (Descripcion, Nombre_Producto, Cantidad_de_producto, Peso_del_producto, Precio_de_venta, Caducidad, Marca) VALUES
+('Leche entera 1L', 'Leche', 120, 1.00, 20.50, '2025-12-31', 'Lala'),
+('Pan integral 680g', 'Pan Integral', 80, 0.68, 25.00, '2025-10-15', 'Bimbo'),
+('Cereal de avena 500g', 'Cereal', 60, 0.50, 35.75, '2026-01-10', 'Kellogg''s'),
+('Arroz blanco 1kg', 'Arroz', 200, 1.00, 18.90, NULL, 'La Merced'),
+('Frijol negro 1kg', 'Frijol', 150, 1.00, 22.30, NULL, 'Costeño'),
+('Aceite vegetal 900ml', 'Aceite', 90, 0.90, 45.00, '2026-03-01', 'Nutrioli'),
+('Azúcar refinada 1kg', 'Azúcar', 110, 1.00, 19.75, NULL, 'Zulka'),
+('Sal de mesa 1kg', 'Sal', 100, 1.00, 12.50, NULL, 'La Fina'),
+('Huevos blancos docena', 'Huevos', 70, 0.75, 33.00, '2025-10-05', 'San Juan'),
+('Mantequilla 250g', 'Mantequilla', 60, 0.25, 50.00, '2025-11-20', 'Gloria'),
+('Queso fresco 500g', 'Queso Fresco', 40, 0.50, 60.00, '2025-09-30', 'Los Altos'),
+('Jugo de naranja 1L', 'Jugo', 85, 1.00, 22.00, '2025-11-15', 'Del Valle'),
+('Agua embotellada 1.5L', 'Agua', 300, 1.50, 12.00, '2026-05-01', 'Bonafont'),
+('Sopa instantánea vaso', 'Sopa', 200, 0.07, 10.50, '2026-07-10', 'Maruchan'),
+('Atún en lata 140g', 'Atún', 150, 0.14, 18.00, '2026-08-15', 'Dolores'),
+('Galletas surtidas 500g', 'Galletas', 100, 0.50, 30.00, '2025-12-01', 'Gamesa'),
+('Refresco cola 2L', 'Refresco', 90, 2.00, 28.00, '2025-12-20', 'Coca-Cola'),
+('Detergente en polvo 1kg', 'Detergente', 130, 1.00, 35.00, NULL, 'Ariel'),
+('Papel higiénico 4 rollos', 'Papel Higiénico', 120, 0.80, 40.00, NULL, 'Regio'),
+('Shampoo 750ml', 'Shampoo', 60, 0.75, 55.00, '2026-06-01', 'Head & Shoulders');
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+       <p class="lead">SELECT * FROM Inventario;</p>
+      <img src="/Imagenes/MR_INVENTARIO_1.png" alt = "Registros tabla Proveedor" width="800" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+<section class="card">
+  <h2>Registro de la tabla "Detalle_Compra"</h2>
+  <pre><code>
+INSERT INTO Detalle_Compra (Id_producto, Id_proveedor, Fecha, Cantidad, Peso) VALUES
+(1, 1, '2025-09-01', 100, 100.00),
+(2, 2, '2025-09-02', 50, 34.00),
+(3, 3, '2025-09-03', 60, 30.00),
+(4, 4, '2025-09-04', 120, 120.00),
+(5, 5, '2025-09-05', 90, 90.00),
+(6, 6, '2025-09-06', 70, 63.00),
+(7, 7, '2025-09-07', 80, 80.00),
+(8, 8, '2025-09-08', 100, 100.00),
+(9, 9, '2025-09-09', 60, 45.00),
+(10, 10, '2025-09-10', 40, 10.00),
+(11, 11, '2025-09-11', 50, 25.00),
+(12, 12, '2025-09-12', 100, 100.00),
+(13, 13, '2025-09-13', 150, 225.00),
+(14, 14, '2025-09-14', 200, 14.00),
+(15, 15, '2025-09-15', 110, 15.40),
+(16, 16, '2025-09-16', 90, 18.00),
+(17, 17, '2025-09-17', 70, 140.00),
+(18, 18, '2025-09-18', 130, 130.00),
+(19, 19, '2025-09-19', 60, 48.00),
+(20, 20, '2025-09-20', 80, 60.00);
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+        <p class="lead">SELECT * FROM Detalle_Compra;</p>
+      <img src="/Imagenes/DETALLECOMPRA.png" alt="Registros tabla Proveedor" width="500" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+    <!-- VOLVER ARRIBA -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px">
+      <small>© <span id="y"></span> Hotel – Sistema de Gestión</small>
+      <a class="chip" href="#top">↑ Subir</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

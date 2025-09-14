@@ -152,26 +152,24 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-        <a href="Inventario.html" style="color: white;">Inventario</a>
-        <a href="Reservaciones.html" style="color: white;">Reservaciones</a>
-        <a href="Horario.html" style="color: white;">Horario</a>
-        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
+        <a href="../HORARIOS_/Horario.html" style="color: white;">Horario</a>
+        <a href="../RESERVACIONES_/Reservaciones.html" style="color: white;">Reservaciones</a>
+        <a href="../HABITACIONES_/Habitaciones.html" style="color: white;">Habitaciones</a>
+        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
   </div>
 </header>
 
-
-
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Habitaciones de la Gestión Hotelera,</h1>
-    <p class="lead">Sistema de control y administración de Habitaciones, usuarios clave del hotel.</p>
+    <h1>Inventario de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Habitaciones</h2>
+      <h2>Inventario</h2>
       <ul>
-        </li>En el subtema de administraciones de habitaciones del hotel, estableciendo permisos diferenciados según el rol del usuario. El sistema permitirá al gerente agregar nuevas habitaciones, visualizar su estado, editar su información y eliminarlas cuando sea necesario. Por su parte, el recepcionista podrá consultar y actualizar los datos de las habitaciones. Este control detallado contribuirá a una mejor gestión del inventario de alojamiento, facilitando la asignación y mantenimiento de las habitaciones del hotel.</li>
+        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
       </ul>
     </section>
 
@@ -179,8 +177,8 @@
     <section class="card">
       <h2>Usuarios en el sistema</h2>
       <div class="fields">
-        <div class="field">Gerente</div>
         <div class="field">Empleado</div>
+        <div class="field">Gerente</div>
       </div>
     </section>
 
@@ -188,34 +186,47 @@
     <section class="card">
       <h2>Funciones del Gerente</h2>
       <ul>
-        <ul>
-        <li><strong>Agregar una nueva habitación</strong> utilizando:
+        <li><strong>Ingresar un producto</strong> utilizando:
           <ul>
-            <li>ID de la habitación</li>
-            <li>Tipo de habitación</li>
-            <li>Capacidad máxima</li>
-            <li>Preció</li>
+            <li>ID del producto</li>
+            <li>Descripción del producto</li>
+            <li>Cantidad del producto</li>
+            <li>Precio de venta</li>
+            <li>Caducidad</li>
+            <li>Marca</li>
+            <li>Proveedor</li>
           </ul>
-        <li><strong>Visualizar el estado de la habitación</strong> Utilizando: ID de la habitación.</li>
-        <li><strong>Eliminar una habitación</strong> Utilizando: ID de la habitación.</li>
-        <li><strong>Editar la información de una habitación</strong> Utilizando: ID de la habitación.</li>
+        </li>
+        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li><strong>Eliminar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
+        <li><strong>Editar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
       </ul>
     </section>
 
     <!-- FUNCIONES DEL EMPLEADO -->
     <section class="card">
       <h2>Funciones del Empleado</h2>
-        <li><strong>Visualizar el estado de la habitación</strong> Utilizando: ID de la habitación.</li>
-        <li><strong>Editar la información de una habitación</strong> Utilizando: ID de la habitación.</li>
+      <ul>
+        <li><strong>Ingresar un producto</strong> utilizando:
+          <ul>
+            <li>ID del producto</li>
+            <li>Descripción del producto</li>
+            <li>Cantidad del producto</li>
+            <li>Precio de venta</li>
+            <li>Caducidad</li>
+            <li>Marca</li>
+            <li>Proveedor</li>
+          </ul>
+        </li>
+        <li><strong>Visualizar un producto</strong> utilizando: ID del producto, Nombre del producto.</li>
       </ul>
     </section>
   <section class="card">
   <h2>Diseño de la base de datos del subsistema</h2>
   <div class="fields">
-    <a href="Inventario.html" class="chip">📊 Diagrama de la base de datos</a>
-    <a href="Inventario.html" class="chip">📚 Descripción de la arquitectura</a>
-    <a href="Inventario.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="Inventario.html" class="chip">📝 Código SQL: Agregar registros</a>
+    <a href="MR_Inventario.html" class="chip">📊 Diagrama de la base de datos</a>
+    <a href="SQL_Inventario.html" class="chip">🧩 Código SQL: Crear tablas</a>
+    <a href="Reg_Inventario.html" class="chip">📝 Código SQL: Agregar registros</a>
   </div>
 </section>
 
