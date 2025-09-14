@@ -152,7 +152,7 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-        <a href="Inventario.html" style="color: white;">Regresar</a>
+        <a href="../HORARIOS_/Horario.html" style="color: white;">Regresar</a>
         <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
@@ -161,29 +161,36 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Diagrama en la base de datos para el Inventario de la Gestión Hotelera</h1>
-    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <h1>Diagrama en la base de datos para los Horarios en la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para los Horarios, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Inventario</h2>
+      <h2>Horarios</h2>
       <ul>
-        </li>El subtema de inventario es una base de datos para registrar y controlar los productos de la gestión hotelera. Su objetivo principal es registrar los procesos (como las entradas y salidas de stock), mantener un seguimiento preciso en tiempo real de la cantidad de productos disponibles.</li>
+        </li>En el subtema de horario busca un control de asistencia que permita a los empleados registrar sus horarios de entrada y salida, y al gerente consultar esta información de manera eficiente, contribuyendo a una mejor supervisión del personal en el entorno hotelero.</li>
       </ul>
     </section>
 
     <!-- USUARIOS DEL SISTEMA -->
     <section class="card">
       <h2>Diagrama de base de datos </h2>
-      <img src="../Imagenes/MR_INVENTARIO_1.png" alt="Descripción de la imagen" width="1000" height="300" style="display: block; margin: 0 auto;">
+      <img src="../Imagenes/MR_Horario.png" alt="Descripción de la imagen" width="850" height="300" style="display: block; margin: 0 auto;">
     </section> 
 
 <section class="card">
-  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Inventario</h2>
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos: Empleado, Horario y Actividad</h2>
   <p>
-    Propósito: La tabla Inventario almacena toda la información relacionada con los productos disponibles en el sistema. Su objetivo principal es llevar un control detallado de cada producto, incluyendo sus características, cantidades disponibles, precios y fechas importantes como la caducidad. Esta información es fundamental para la gestión de stock, ventas y reposición de productos.
+    Propósito: Esta arquitectura permite registrar y gestionar la información del personal (Empleado), sus turnos de trabajo (Horario) y las actividades realizadas durante dichos turnos (Actividad). La relación entre estas tres tablas permite una trazabilidad clara del trabajo realizado por cada empleado en un momento específico.
   </p>
 
-  <h3>Explicación de cada campo</h3>
+
+<section class="card">
+  <h2>Descripción de la Tabla: Empleado</h2>
+  <p>
+    Propósito: La tabla <strong>Empleado</strong> almacena información básica de los empleados. Aunque actualmente no está implementada en este proyecto, se recalca que el campo <code>IdEmpleado</code> en las tablas <strong>Horario</strong> y <strong>Actividad</strong> se conectará con esta tabla en un futuro, permitiendo así una integración completa de la información del personal.
+  </p>
+
+  <h3>Explicación de campos</h3>
   <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
     <thead>
       <tr>
@@ -195,66 +202,31 @@
     </thead>
     <tbody>
       <tr>
-        <td>Id_Producto</td>
+        <td>IdEmpleado</td>
         <td>int</td>
         <td>No</td>
-        <td>Identificador único para cada producto. Clave primaria que permite diferenciar un producto de otro.</td>
+        <td>Identificador único del empleado. Se utilizará para conectar con las demás tablas.</td>
       </tr>
       <tr>
-        <td>Descripcion</td>
-        <td>text</td>
-        <td>Sí</td>
-        <td>Contiene una descripción detallada del producto para facilitar su identificación y comprensión.</td>
-      </tr>
-      <tr>
-        <td>Nombre_Producto</td>
-        <td>varchar(100)</td>
+        <td>Nombre</td>
+        <td>nvarchar(100)</td>
         <td>No</td>
-        <td>Nombre corto o común del producto para mostrar en listados y reportes.</td>
+        <td>Nombre del empleado.</td>
       </tr>
-      <tr>
-        <td>Cantidad_de_producto</td>
-        <td>int</td>
-        <td>Sí</td>
-        <td>Cantidad actual disponible en el inventario. Fundamental para saber stock y evitar faltantes o excesos.</td>
-      </tr>
-      <tr>
-        <td>Peso_del_producto</td>
-        <td>decimal(10, 2)</td>
-        <td>Sí</td>
-        <td>Indica el peso del producto, útil para control de logística, almacenamiento y cálculo de costos.</td>
-      </tr>
-      <tr>
-        <td>Precio_de_venta</td>
-        <td>decimal(10, 2)</td>
-        <td>Sí</td>
-        <td>Precio al que se vende el producto. Necesario para calcular ingresos y para la gestión de ventas.</td>
-      </tr>
-      <tr>
-        <td>Caducidad</td>
-        <td>date</td>
-        <td>Sí</td>
-        <td>Fecha de expiración del producto (si aplica), importante para productos perecederos y para garantizar calidad.</td>
-      </tr>
-      <tr>
-        <td>Marca</td>
-        <td>varchar(50)</td>
-        <td>Sí</td>
-        <td>Marca o fabricante del producto, ayuda a diferenciar productos similares y para control de proveedores.</td>
-      </tr>
+      <!-- Puedes agregar más campos en el futuro como Apellido, Departamento, etc. -->
     </tbody>
   </table>
 </section>
 
-
+<br>
 
 <section class="card">
-  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Detalle Compra</h2>
+  <h2>Descripción de la Tabla: Horario</h2>
   <p>
-    Propósito: La tabla Detalle Compra almacena la información detallada de cada compra realizada, registrando productos, cantidades y pesos asociados. Esto permite llevar un control preciso de cada transacción, facilitando la gestión de inventarios y el seguimiento de proveedores.
+    Propósito: La tabla <strong>Horario</strong> almacena los turnos laborales asignados a los empleados. Cada registro indica cuándo trabajó un empleado, incluyendo la fecha, hora de entrada y salida, y el total de horas trabajadas. Está relacionada con la tabla <strong>Empleado</strong> mediante el campo <code>IdEmpleado</code>.
   </p>
 
-  <h3>Explicación de cada campo</h3>
+  <h3>Explicación de campos</h3>
   <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
     <thead>
       <tr>
@@ -266,52 +238,54 @@
     </thead>
     <tbody>
       <tr>
-        <td>Id_compra</td>
+        <td>IdHorario</td>
         <td>int</td>
         <td>No</td>
-        <td>Identificador único para cada compra. Clave primaria que permite diferenciar una compra de otra.</td>
+        <td>Identificador único del turno. Clave primaria de la tabla.</td>
       </tr>
       <tr>
-        <td>Id_producto</td>
+        <td>IdEmpleado</td>
         <td>int</td>
         <td>No</td>
-        <td>Referencia al producto comprado, permitiendo relacionar el detalle con la tabla de productos.</td>
-      </tr>
-      <tr>
-        <td>Id_proveedor</td>
-        <td>int</td>
-        <td>No</td>
-        <td>Identifica al proveedor que realizó la compra, útil para el control de proveedores y auditorías.</td>
+        <td>Clave foránea que se conectará con la tabla <strong>Empleado</strong>. Relaciona el turno con el empleado correspondiente.</td>
       </tr>
       <tr>
         <td>Fecha</td>
         <td>date</td>
-        <td>Sí</td>
-        <td>Fecha en la que se realizó la compra, importante para seguimiento temporal de transacciones.</td>
+        <td>No</td>
+        <td>Fecha del turno asignado.</td>
       </tr>
       <tr>
-        <td>Cantidad</td>
-        <td>int</td>
-        <td>Sí</td>
-        <td>Cantidad de productos comprados, esencial para el control de inventario.</td>
+        <td>HoraEntrada</td>
+        <td>time(7)</td>
+        <td>No</td>
+        <td>Hora de inicio del turno laboral.</td>
       </tr>
       <tr>
-        <td>Peso</td>
-        <td>decimal(10, 2)</td>
+        <td>HoraSalida</td>
+        <td>time(7)</td>
+        <td>No</td>
+        <td>Hora de fin del turno laboral.</td>
+      </tr>
+      <tr>
+        <td>HorasTotales</td>
+        <td>calculado (int)</td>
         <td>Sí</td>
-        <td>Peso total de los productos comprados, útil para logística y control de mercancía.</td>
+        <td>Se calcula automáticamente como la diferencia entre hora de entrada y salida.</td>
       </tr>
     </tbody>
   </table>
 </section>
 
+<br>
+
 <section class="card">
-  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Proveedor</h2>
+  <h2>Descripción de la Tabla: Actividad</h2>
   <p>
-    Propósito: La tabla Proveedor almacena la información detallada de los proveedores que suministran productos al sistema. Esto permite gestionar los datos de contacto y detalles relevantes para facilitar la comunicación y la administración de las relaciones comerciales.
+    Propósito: La tabla <strong>Actividad</strong> registra las actividades específicas realizadas por un empleado durante un turno laboral. Cada actividad está vinculada tanto a un empleado como a un horario determinado, lo que permite conocer qué se hizo, cuándo y por quién.
   </p>
 
-  <h3>Explicación de cada campo</h3>
+  <h3>Explicación de campos</h3>
   <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
     <thead>
       <tr>
@@ -323,58 +297,40 @@
     </thead>
     <tbody>
       <tr>
-        <td>Id_Proveedor</td>
+        <td>IdActividad</td>
         <td>int</td>
         <td>No</td>
-        <td>Identificador único para cada proveedor. Clave primaria que permite diferenciar un proveedor de otro.</td>
+        <td>Identificador único de la actividad registrada. Clave primaria.</td>
       </tr>
       <tr>
-        <td>Primer_Nombre</td>
-        <td>varchar(50)</td>
+        <td>IdEmpleado</td>
+        <td>int</td>
         <td>No</td>
-        <td>Primer nombre del proveedor o contacto principal.</td>
+        <td>Clave foránea que se conectará con la tabla <strong>Empleado</strong>. Indica quién realizó la actividad.</td>
       </tr>
       <tr>
-        <td>Segundo_Nombre</td>
-        <td>varchar(50)</td>
-        <td>Sí</td>
-        <td>Segundo nombre del proveedor o contacto, si aplica.</td>
-      </tr>
-      <tr>
-        <td>Primer_Apellido</td>
-        <td>varchar(50)</td>
+        <td>IdHorario</td>
+        <td>int</td>
         <td>No</td>
-        <td>Primer apellido del proveedor o contacto principal.</td>
+        <td>Clave foránea relacionada con la tabla <strong>Horario</strong>. Permite vincular la actividad al turno correspondiente.</td>
       </tr>
       <tr>
-        <td>Segundo_Apellido</td>
-        <td>varchar(50)</td>
-        <td>Sí</td>
-        <td>Segundo apellido del proveedor o contacto, si aplica.</td>
-      </tr>
-      <tr>
-        <td>Telefono</td>
-        <td>varchar(20)</td>
-        <td>Sí</td>
-        <td>Número de teléfono para contacto directo con el proveedor.</td>
-      </tr>
-      <tr>
-        <td>Correo_electronico</td>
-        <td>varchar(100)</td>
-        <td>Sí</td>
-        <td>Correo electrónico para comunicación y notificaciones.</td>
-      </tr>
-      <tr>
-        <td>Identificación</td>
-        <td>varchar(30)</td>
-        <td>Sí</td>
-        <td>Documento o número de identificación del proveedor para fines legales o administrativos.</td>
-      </tr>
-      <tr>
-        <td>RFC</td>
-        <td>varchar(20)</td>
+        <td>ActividadProgramada</td>
+        <td>nvarchar(200)</td>
         <td>No</td>
-        <td>Registro Federal de Contribuyentes del proveedor, importante para facturación y control fiscal.</td>
+        <td>Nombre o título de la actividad realizada.</td>
+      </tr>
+      <tr>
+        <td>LugarActividad</td>
+        <td>nvarchar(100)</td>
+        <td>Sí</td>
+        <td>Ubicación física o virtual donde se llevó a cabo la actividad.</td>
+      </tr>
+      <tr>
+        <td>Descripcion</td>
+        <td>nvarchar(MAX)</td>
+        <td>Sí</td>
+        <td>Detalle descriptivo de lo realizado en la actividad.</td>
       </tr>
     </tbody>
   </table>

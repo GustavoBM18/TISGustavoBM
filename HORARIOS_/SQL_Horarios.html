@@ -152,24 +152,20 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-        <a href="../INVENTARIO_/Inventario.html" style="color: white;">Inventario</a>
-        <a href="../RESERVACIONES_/Reservaciones.html" style="color: white;">Reservaciones</a>
-        <a href="../HABITACIONES_/Habitaciones.html" style="color: white;">Habitaciones</a>
-        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+        <a href="../HORARIOS_/Horario.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
   </div>
 </header>
 
-
-
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Horarios de la Gestión Hotelera,</h1>
-    <p class="lead">Sistema de control y administración de horarios, usuarios clave del hotel.</p>
+    <h1>Codigó SQL aplicado en los horarios de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para los horarios, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Horario</h2>
+      <h2>Inventario</h2>
       <ul>
         </li>En el subtema de horario busca un control de asistencia que permita a los empleados registrar sus horarios de entrada y salida, y al gerente consultar esta información de manera eficiente, contribuyendo a una mejor supervisión del personal en el entorno hotelero.</li>
       </ul>
@@ -177,49 +173,64 @@
 
     <!-- USUARIOS DEL SISTEMA -->
     <section class="card">
-      <h2>Usuarios en el sistema</h2>
-      <div class="fields">
-        <div class="field">Empleado</div>
-        <div class="field">Gerente</div>
-      </div>
-    </section>
+      <h2>Codigó SQL para las tablas </h2>
+    </section> 
 
-    <!-- FUNCIONES DEL GERENTE -->
-    <section class="card">
-      <h2>Funciones del Gerente</h2>
-      <ul>
-        <ul>
-        <li><strong>Ingresar un nuevo horario</strong> utilizando:
-          <ul>
-            <li>ID del empleado</li>
-            <li>Fechas</li>
-            <li>Turno</li>
-            <li>Hora de entrada</li>
-            <li>Hora de salida</li>
-          </ul>
-        <li><strong>Visualizar las entrada de un empleado</strong> Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Editar el horario de un empleado</strong> Utilizando: ID del empleado, ID del horario</li>
-        <li><strong>Eliminar un horario</strong> Utilizando: ID del empleado, ID del horario.</li>
-      </ul>
-    </section>
-
-    <!-- FUNCIONES DEL EMPLEADO -->
-    <section class="card">
-      <h2>Funciones del Empleado</h2>
-        <li><strong>Registrar su hora de llegada</strong>Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Registrar su hora de Salida</strong>Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Visualizar sus horas totales</strong>Utilizando: ID del empleado, ID del horario.</li>
-      </ul>
-    </section>
-  <section class="card">
-  <h2>Diseño de la base de datos del subsistema</h2>
-  <div class="fields">
-    <a href="../HORARIOS_/MR_HORARIOS.html"chip">📊 Diagrama de la base de datos</a>
-    <a href="../HORARIOS_/SQL_Horarios.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="../HORARIOS_/Reg_horarios.html" class="chip">📝 Código SQL: Agregar registros</a>
-  </div>
+<section class="card">
+  <h2>Creación de la base de datos</h2>
+  <pre><code>
+CREATE DATABASE InventarioDB;
+GO
+  </code></pre>
 </section>
 
+<section class="card">
+  <h2>Seleccionar la base de datos</h2>
+  <pre><code>
+USE InventarioDB;
+GO
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Crear tabla "Horario"</h2>
+  <pre><code>
+CREATE TABLE Horario (
+    IdHorario INT PRIMARY KEY,
+    IdEmpleado INT NOT NULL,
+    Fecha DATE NOT NULL,
+    HoraEntrada TIME NOT NULL,
+    HoraSalida TIME NOT NULL,
+    HorasTotales AS DATEDIFF(HOUR, HoraEntrada, HoraSalida), -- campo calculado
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Crear tabla "Actividad"</h2>
+  <pre><code>
+CREATE TABLE Actividad (
+    IdActividad INT PRIMARY KEY,
+    IdEmpleado INT NOT NULL,
+    IdHorario INT NOT NULL, -- Nuevo campo agregado
+    ActividadProgramada NVARCHAR(200) NOT NULL,
+    LugarActividad NVARCHAR(100),
+    Descripcion NVARCHAR(MAX),
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Crear tabla "Claves foráneas"</h2>
+  <pre><code>
+    CONSTRAINT FK_Actividad_Empleado FOREIGN KEY (IdEmpleado)
+        REFERENCES Empleado(IdEmpleado),
+
+    CONSTRAINT FK_Actividad_Horario FOREIGN KEY (IdHorario)
+        REFERENCES Horario(IdHorario)
+
+    CONSTRAINT FK_Horario_Empleado FOREIGN KEY (IdEmpleado)
+        REFERENCES Empleado(IdEmpleado)
+  </code></pre>
+</section>
 
     <!-- VOLVER ARRIBA -->
   </main>

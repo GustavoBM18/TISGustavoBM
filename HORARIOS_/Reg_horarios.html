@@ -152,73 +152,95 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-        <a href="../INVENTARIO_/Inventario.html" style="color: white;">Inventario</a>
-        <a href="../RESERVACIONES_/Reservaciones.html" style="color: white;">Reservaciones</a>
-        <a href="../HABITACIONES_/Habitaciones.html" style="color: white;">Habitaciones</a>
-        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+        <a href="../HORARIOS_/Horario.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
   </div>
 </header>
 
-
-
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Horarios de la Gestión Hotelera,</h1>
-    <p class="lead">Sistema de control y administración de horarios, usuarios clave del hotel.</p>
+    <h1>Registros del codigó SQL aplicado en los horarios de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para los horarios, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Horario</h2>
+      <h2>Horarios</h2>
       <ul>
         </li>En el subtema de horario busca un control de asistencia que permita a los empleados registrar sus horarios de entrada y salida, y al gerente consultar esta información de manera eficiente, contribuyendo a una mejor supervisión del personal en el entorno hotelero.</li>
       </ul>
     </section>
 
     <!-- USUARIOS DEL SISTEMA -->
-    <section class="card">
-      <h2>Usuarios en el sistema</h2>
-      <div class="fields">
-        <div class="field">Empleado</div>
-        <div class="field">Gerente</div>
-      </div>
-    </section>
+   
 
-    <!-- FUNCIONES DEL GERENTE -->
-    <section class="card">
-      <h2>Funciones del Gerente</h2>
-      <ul>
-        <ul>
-        <li><strong>Ingresar un nuevo horario</strong> utilizando:
-          <ul>
-            <li>ID del empleado</li>
-            <li>Fechas</li>
-            <li>Turno</li>
-            <li>Hora de entrada</li>
-            <li>Hora de salida</li>
-          </ul>
-        <li><strong>Visualizar las entrada de un empleado</strong> Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Editar el horario de un empleado</strong> Utilizando: ID del empleado, ID del horario</li>
-        <li><strong>Eliminar un horario</strong> Utilizando: ID del empleado, ID del horario.</li>
-      </ul>
-    </section>
-
-    <!-- FUNCIONES DEL EMPLEADO -->
-    <section class="card">
-      <h2>Funciones del Empleado</h2>
-        <li><strong>Registrar su hora de llegada</strong>Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Registrar su hora de Salida</strong>Utilizando: ID del empleado, ID del horario.</li>
-        <li><strong>Visualizar sus horas totales</strong>Utilizando: ID del empleado, ID del horario.</li>
-      </ul>
-    </section>
-  <section class="card">
-  <h2>Diseño de la base de datos del subsistema</h2>
-  <div class="fields">
-    <a href="../HORARIOS_/MR_HORARIOS.html"chip">📊 Diagrama de la base de datos</a>
-    <a href="../HORARIOS_/SQL_Horarios.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="../HORARIOS_/Reg_horarios.html" class="chip">📝 Código SQL: Agregar registros</a>
-  </div>
+<section class="card">
+  <h2>Registros de la tabla "Horarios"</h2>
+  <pre><code>
+INSERT INTO Horario (IdHorario, IdEmpleado, Fecha, HoraEntrada, HoraSalida)
+VALUES
+(1, 101, '2025-09-01', '08:00:00', '16:00:00'),
+(2, 102, '2025-09-01', '09:00:00', '17:00:00'),
+(3, 103, '2025-09-01', '07:30:00', '15:30:00'),
+(4, 104, '2025-09-02', '08:00:00', '16:00:00'),
+(5, 101, '2025-09-02', '09:00:00', '17:00:00'),
+(6, 105, '2025-09-02', '08:30:00', '16:30:00'),
+(7, 102, '2025-09-03', '07:00:00', '15:00:00'),
+(8, 103, '2025-09-03', '08:00:00', '16:00:00'),
+(9, 104, '2025-09-03', '09:00:00', '17:00:00'),
+(10, 105, '2025-09-04', '08:00:00', '16:00:00'),
+(11, 101, '2025-09-04', '07:30:00', '15:30:00'),
+(12, 102, '2025-09-05', '08:00:00', '16:00:00'),
+(13, 103, '2025-09-05', '09:00:00', '17:00:00'),
+(14, 104, '2025-09-05', '08:00:00', '16:00:00'),
+(15, 105, '2025-09-06', '07:00:00', '15:00:00'),
+(16, 101, '2025-09-06', '08:00:00', '16:00:00'),
+(17, 102, '2025-09-07', '09:00:00', '17:00:00'),
+(18, 103, '2025-09-07', '08:30:00', '16:30:00'),
+(19, 104, '2025-09-08', '07:00:00', '15:00:00'),
+(20, 105, '2025-09-08', '08:00:00', '16:00:00');
+  </code></pre>
 </section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+      <p class="lead">SELECT * FROM Horario;</p>
+      <img src="../Imagenes/REG_HORARIO.png" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
+</section> 
+
+
+<section class="card">
+  <h2>Registro de la tabla "Actividades"</h2>
+  <pre><code>
+INSERT INTO Actividad (IdActividad, IdEmpleado, ActividadProgramada, LugarActividad, Descripcion) VALUES
+(1, 101, 'Reunión con equipo', 'Sala de juntas', 'Planificación semanal de proyectos'),
+(2, 102, 'Capacitación', 'Sala de capacitación', 'Curso de nuevas herramientas'),
+(3, 103, 'Inspección de almacén', 'Almacén principal', 'Verificación de inventario'),
+(4, 104, 'Auditoría interna', 'Oficina central', 'Revisión de procesos'),
+(5, 105, 'Atención a clientes', 'Área de ventas', 'Resolución de dudas y quejas'),
+(6, 101, 'Actualización de sistema', 'Departamento IT', 'Implementación de mejoras'),
+(7, 102, 'Revisión de calidad', 'Planta de producción', 'Control de calidad de productos'),
+(8, 103, 'Reporte financiero', 'Oficina contabilidad', 'Elaboración de reportes trimestrales'),
+(9, 104, 'Reunión con proveedores', 'Sala de juntas', 'Negociación de contratos'),
+(10, 105, 'Mantenimiento', 'Área técnica', 'Revisión de equipos y maquinaria'),
+(11, 101, 'Planificación de eventos', 'Oficina marketing', 'Organización de campañas publicitarias'),
+(12, 102, 'Capacitación avanzada', 'Sala de capacitación', 'Curso de liderazgo'),
+(13, 103, 'Análisis de datos', 'Departamento IT', 'Estudio de resultados y tendencias'),
+(14, 104, 'Evaluación de desempeño', 'Recursos Humanos', 'Revisión anual de empleados'),
+(15, 105, 'Atención telefónica', 'Call center', 'Soporte y atención al cliente'),
+(16, 101, 'Actualización de inventarios', 'Almacén', 'Registro y control de entradas y salidas'),
+(17, 102, 'Revisión de contratos', 'Oficina legal', 'Verificación de documentos legales'),
+(18, 103, 'Mantenimiento preventivo', 'Planta de producción', 'Chequeo de maquinaria'),
+(19, 104, 'Capacitación interna', 'Sala de juntas', 'Formación en nuevos procesos'),
+(20, 105, 'Supervisión', 'Área de producción', 'Control y seguimiento de actividades');
+  </code></pre>
+</section>
+
+<section class="card">
+      <h2>Comprobación de los resgistros</h2>
+       <p class="lead">SELECT * FROM Actividad;</p>
+      <img src="../Imagenes/Reg_Activides.png" alt = "Registros tabla Proveedor" width="800" height="300" style="display: block; margin: 0 auto;">
+</section> 
 
 
     <!-- VOLVER ARRIBA -->
