@@ -161,8 +161,8 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Registros del odigó SQL aplicado en las habitaciones de la Gestión Hotelera</h1>
-    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <h1>Registros del codigó SQL aplicado en las habitaciones de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para las habitaciones, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
       <h2>Inventario</h2>
@@ -224,73 +224,6 @@ INSERT INTO Habitacion (
       <h2>Comprobación de los resgistros</h2>
       <p class="lead">SELECT * FROM Proveedor;</p>
       <img src="../Imagenes/Reg_Habitacion.png" alt="Registros tabla Proveedor" width="1000" height="300" style="display: block; margin: 0 auto;">
-</section> 
-
-
-<section class="card">
-  <h2>Registro de la tabla "Inventario"</h2>
-  <pre><code>
-INSERT INTO Inventario (Descripcion, Nombre_Producto, Cantidad_de_producto, Peso_del_producto, Precio_de_venta, Caducidad, Marca) VALUES
-('Leche entera 1L', 'Leche', 120, 1.00, 20.50, '2025-12-31', 'Lala'),
-('Pan integral 680g', 'Pan Integral', 80, 0.68, 25.00, '2025-10-15', 'Bimbo'),
-('Cereal de avena 500g', 'Cereal', 60, 0.50, 35.75, '2026-01-10', 'Kellogg''s'),
-('Arroz blanco 1kg', 'Arroz', 200, 1.00, 18.90, NULL, 'La Merced'),
-('Frijol negro 1kg', 'Frijol', 150, 1.00, 22.30, NULL, 'Costeño'),
-('Aceite vegetal 900ml', 'Aceite', 90, 0.90, 45.00, '2026-03-01', 'Nutrioli'),
-('Azúcar refinada 1kg', 'Azúcar', 110, 1.00, 19.75, NULL, 'Zulka'),
-('Sal de mesa 1kg', 'Sal', 100, 1.00, 12.50, NULL, 'La Fina'),
-('Huevos blancos docena', 'Huevos', 70, 0.75, 33.00, '2025-10-05', 'San Juan'),
-('Mantequilla 250g', 'Mantequilla', 60, 0.25, 50.00, '2025-11-20', 'Gloria'),
-('Queso fresco 500g', 'Queso Fresco', 40, 0.50, 60.00, '2025-09-30', 'Los Altos'),
-('Jugo de naranja 1L', 'Jugo', 85, 1.00, 22.00, '2025-11-15', 'Del Valle'),
-('Agua embotellada 1.5L', 'Agua', 300, 1.50, 12.00, '2026-05-01', 'Bonafont'),
-('Sopa instantánea vaso', 'Sopa', 200, 0.07, 10.50, '2026-07-10', 'Maruchan'),
-('Atún en lata 140g', 'Atún', 150, 0.14, 18.00, '2026-08-15', 'Dolores'),
-('Galletas surtidas 500g', 'Galletas', 100, 0.50, 30.00, '2025-12-01', 'Gamesa'),
-('Refresco cola 2L', 'Refresco', 90, 2.00, 28.00, '2025-12-20', 'Coca-Cola'),
-('Detergente en polvo 1kg', 'Detergente', 130, 1.00, 35.00, NULL, 'Ariel'),
-('Papel higiénico 4 rollos', 'Papel Higiénico', 120, 0.80, 40.00, NULL, 'Regio'),
-('Shampoo 750ml', 'Shampoo', 60, 0.75, 55.00, '2026-06-01', 'Head & Shoulders');
-  </code></pre>
-</section>
-
-<section class="card">
-      <h2>Comprobación de los resgistros</h2>
-       <p class="lead">SELECT * FROM Inventario;</p>
-      <img src="/Imagenes/MR_INVENTARIO_1.png" alt = "Registros tabla Proveedor" width="800" height="300" style="display: block; margin: 0 auto;">
-</section> 
-
-<section class="card">
-  <h2>Registro de la tabla "Detalle_Compra"</h2>
-  <pre><code>
-INSERT INTO Detalle_Compra (Id_producto, Id_proveedor, Fecha, Cantidad, Peso) VALUES
-(1, 1, '2025-09-01', 100, 100.00),
-(2, 2, '2025-09-02', 50, 34.00),
-(3, 3, '2025-09-03', 60, 30.00),
-(4, 4, '2025-09-04', 120, 120.00),
-(5, 5, '2025-09-05', 90, 90.00),
-(6, 6, '2025-09-06', 70, 63.00),
-(7, 7, '2025-09-07', 80, 80.00),
-(8, 8, '2025-09-08', 100, 100.00),
-(9, 9, '2025-09-09', 60, 45.00),
-(10, 10, '2025-09-10', 40, 10.00),
-(11, 11, '2025-09-11', 50, 25.00),
-(12, 12, '2025-09-12', 100, 100.00),
-(13, 13, '2025-09-13', 150, 225.00),
-(14, 14, '2025-09-14', 200, 14.00),
-(15, 15, '2025-09-15', 110, 15.40),
-(16, 16, '2025-09-16', 90, 18.00),
-(17, 17, '2025-09-17', 70, 140.00),
-(18, 18, '2025-09-18', 130, 130.00),
-(19, 19, '2025-09-19', 60, 48.00),
-(20, 20, '2025-09-20', 80, 60.00);
-  </code></pre>
-</section>
-
-<section class="card">
-      <h2>Comprobación de los resgistros</h2>
-        <p class="lead">SELECT * FROM Detalle_Compra;</p>
-      <img src="/Imagenes/DETALLECOMPRA.png" alt="Registros tabla Proveedor" width="500" height="300" style="display: block; margin: 0 auto;">
 </section> 
 
     <!-- VOLVER ARRIBA -->

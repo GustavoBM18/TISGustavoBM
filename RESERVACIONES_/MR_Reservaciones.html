@@ -152,10 +152,8 @@
     <nav>
       <div class="brand">Hotel – Gestión</div>
       <div class="navlinks">
-        <a href="../INVENTARIO_/Inventario.html" style="color: white;">Inventario</a>
-        <a href="../HORARIOS_/Horario.html" style="color: white;">Horario</a>
-        <a href="../HABITACIONES_/Habitaciones.html" style="color: white;">Habitaciones</a>
-        <a class="chip" href="../index.html" style="color: white;">🏠 Inicio</a>
+        <a href="../RESERVACIONES_/Reservaciones.html" style="color: white;">Regresar</a>
+        <a class="chip" href="index.html" style="color: white;">🏠 Inicio</a>
       </div>
     </nav>
   </div>
@@ -163,11 +161,11 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Reservaciónes de la Gestión Hotelera</h1>
-    <p class="lead">Sistema de control y administración de reservaciones, usuarios clave del hotel.</p>
+    <h1>Diagrama en la base de datos para las reservaciones de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para las reservaciones, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
-      <h2>Reservaciónes</h2>
+      <h2>Inventario</h2>
       <ul>
         </li>En el subtema reservaciones tiene como función gestionar las reservaciones del hotel de manera eficiente. El sistema brindará acceso tanto al gerente como al recepcionista, quienes podrán agregar, eliminar, actualizar y visualizar los datos de cada reservación, con el propósito de mantener un control preciso de las reservas, optimizar la asignación de habitaciones y mejorar la experiencia del cliente en el proceso de alojamiento.</li>
       </ul>
@@ -175,105 +173,120 @@
 
     <!-- USUARIOS DEL SISTEMA -->
     <section class="card">
-      <h2>Usuarios en el sistema</h2>
-      <div class="fields">
-        <div class="field">Empleado</div>
-        <div class="field">Gerente</div>
-        <div class="field">Cliente</div>
-      </div>
-    </section>
+      <h2>Diagrama de base de datos </h2>
+      <img src="../Imagenes/MR_Reser.png" alt="Descripción de la imagen" width="850" height="500" style="display: block; margin: 0 auto;">
+    </section> 
 
-    <!-- FUNCIONES DEL GERENTE -->
-    <section class="card">
-      <h2>Funciones del Gerente</h2>
-      <ul>
-        <ul>
-        <li><strong>Ingresar una reservación</strong> utilizando:
-          <ul>
-            <li>ID de la reservación</li>
-            <li>Fecha de la reservacíón</li>
-            <li>Primer nombre de huesped</li>
-            <li>Apellido paterno</li>
-            <li>Numero de telefono</li>
-            <li>Cantidad de huespedes</li>
-            <li>Numero de noches</li>
-            <li>Proveedor</li>
-          </ul>
-        <li><strong>Eliminar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Visualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Actualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Eliminar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-      </ul>
-    </section>
+<<section class="card">
+  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla Reservaciones</h2>
+  <p>
+    <strong>Propósito:</strong> La tabla <strong>Reservaciones</strong> tiene como finalidad almacenar toda la información necesaria para gestionar y controlar las reservaciones realizadas por los huéspedes en un sistema de administración hotelera. Contiene datos personales del huésped, detalles de la estadía, habitación asignada y posibles conexiones a otros sistemas como servicios adicionales o estacionamientos. Esta estructura permite un manejo eficiente del flujo de ocupación, disponibilidad, historial de clientes y servicios contratados.
+  </p>
 
-    <!-- FUNCIONES DEL EMPLEADO -->
-    <section class="card">
-      <h2>Funciones del Empleado</h2>
-       <ul>
-        <ul>
-        <li><strong>Ingresar una reservación</strong> utilizando:
-          <ul>
-            <li>ID de la reservación</li>
-            <li>Fecha de la reservacíón</li>
-            <li>Primer nombre de huesped</li>
-            <li>Apellido paterno</li>
-            <li>Numero de telefono</li>
-            <li>Cantidad de huespedes</li>
-            <li>Numero de noches</li>
-            <li>Proveedor</li>
-          </ul>
-        <li><strong>Eliminar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Visualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Actualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-      </ul>
-    </section>
-     <section class="card">
-      <h2>Funciones del Empleado</h2>
-       <ul>
-        <ul>
-        <li><strong>Ingresar una reservación</strong> utilizando:
-          <ul>
-            <li>ID de la reservación</li>
-            <li>Fecha de la reservacíón</li>
-            <li>Primer nombre de huesped</li>
-            <li>Apellido paterno</li>
-            <li>Numero de telefono</li>
-            <li>Cantidad de huespedes</li>
-            <li>Numero de noches</li>
-            <li>Proveedor</li>
-          </ul>
-        <li><strong>Eliminar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Visualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-        <li><strong>Actualizar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-      </ul>
-    </section>
-  <section class="card">
-      <h2>Funciones del cliente</h2>
-       <ul>
-        <ul>
-        <li><strong>Ingresar una reservación</strong> utilizando:
-          <ul>
-            <li>ID de la reservación</li>
-            <li>Fecha de la reservacíón</li>
-            <li>Primer nombre de huesped</li>
-            <li>Apellido paterno</li>
-            <li>Numero de telefono</li>
-            <li>Cantidad de huespedes</li>
-            <li>Numero de noches</li>
-            <li>Proveedor</li>
-          </ul>
-        <li><strong>Cancelar una reservación</strong> Utilizando: ID de la reservación, Nombre del huesped, Fecha.</li>
-      </ul>
-    </section>
-  <section class="card">
-  <h2>Diseño de la base de datos del subsistema</h2>
-  <div class="fields">
-    <a href="../RESERVACIONES_/MR_Reservaciones.html" class="chip">📊 Diagrama de la base de datos</a>
-    <a href="../RESERVACIONES_/SQL_RESERVACIONES.html" class="chip">🧩 Código SQL: Crear tablas</a>
-    <a href="Inventario.html" class="chip">📝 Código SQL: Agregar registros</a>
-  </div>
+  <h3>Explicación de cada campo</h3>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo de dato</th>
+        <th>Permitir valores nulos</th>
+        <th>Propósito y Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>IdReservacion</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identificador único de la reservación. Clave primaria autoincrementable para distinguir cada reserva.</td>
+      </tr>
+      <tr>
+        <td>Fecha</td>
+        <td>date</td>
+        <td>No</td>
+        <td>Fecha en la que se realiza la reservación. Permite mantener trazabilidad cronológica de las reservas.</td>
+      </tr>
+      <tr>
+        <td>PrimerNombre</td>
+        <td>nvarchar(50)</td>
+        <td>No</td>
+        <td>Primer nombre del huésped. Esencial para la identificación del cliente.</td>
+      </tr>
+      <tr>
+        <td>SegundoNombre</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>Segundo nombre del huésped. Campo opcional para una identificación más completa.</td>
+      </tr>
+      <tr>
+        <td>ApellidoPaterno</td>
+        <td>nvarchar(50)</td>
+        <td>No</td>
+        <td>Apellido paterno del huésped. Parte de la identificación básica.</td>
+      </tr>
+      <tr>
+        <td>ApellidoMaterno</td>
+        <td>nvarchar(50)</td>
+        <td>Sí</td>
+        <td>Apellido materno del huésped. Opcional, mejora la precisión del registro del cliente.</td>
+      </tr>
+      <tr>
+        <td>NumeroTelefono</td>
+        <td>nvarchar(20)</td>
+        <td>No</td>
+        <td>Número de contacto del huésped. Útil para confirmaciones o emergencias.</td>
+      </tr>
+      <tr>
+        <td>CorreoElectronico</td>
+        <td>nvarchar(100)</td>
+        <td>Sí</td>
+        <td>Correo electrónico del huésped. Se puede utilizar para notificaciones y confirmaciones.</td>
+      </tr>
+      <tr>
+        <td>NumeroHuespedes</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Indica cuántas personas incluye la reservación. Relevante para asignación de habitaciones.</td>
+      </tr>
+      <tr>
+        <td>NumeroNoches</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Duración de la estancia en noches. Permite calcular disponibilidad y facturación.</td>
+      </tr>
+      <tr>
+        <td>CheckIn</td>
+        <td>datetime</td>
+        <td>No</td>
+        <td>Fecha y hora de entrada del huésped. Ayuda en la planificación operativa.</td>
+      </tr>
+      <tr>
+        <td>CheckOut</td>
+        <td>datetime</td>
+        <td>No</td>
+        <td>Fecha y hora de salida del huésped. Permite liberar habitaciones y planificar limpieza.</td>
+      </tr>
+      <tr>
+        <td>IdHabitacion</td>
+        <td>int</td>
+        <td>No</td>
+        <td>Identificador de la habitación reservada. Se relaciona directamente con la tabla <strong>Habitacion</strong>.</td>
+      </tr>
+      <tr>
+        <td>IdServicio</td>
+        <td>int</td>
+        <td>Sí</td>
+        <td>Identificador del servicio contratado. Conectado con otra base de datos o proyecto externo.</td>
+      </tr>
+      <tr>
+        <td>IdEstacionamiento</td>
+        <td>int</td>
+        <td>Sí</td>
+        <td>Identificador del espacio de estacionamiento asignado. Conectado con otra base de datos o proyecto externo.</td>
+      </tr>
+    </tbody>
+  </table>
 </section>
-
 
     <!-- VOLVER ARRIBA -->
   </main>

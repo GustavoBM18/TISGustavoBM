@@ -161,92 +161,89 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="wrap">
-    <h1>Diagrama en la base de datos para las habitaciones de la Gestión Hotelera</h1>
-    <p class="lead">Sistema de control y administración para productos, usuarios y operaciones clave del hotel.</p>
+    <h1>Codigó SQL aplicado en las reservaciones de la Gestión Hotelera</h1>
+    <p class="lead">Sistema de control y administración para las reservaciones, usuarios y operaciones clave del hotel.</p>
     <!-- DESCRIPCIÓN DEL SISTEMA -->
     <section class="card">
       <h2>Inventario</h2>
       <ul>
-        </li>En el subtema de administraciones de habitaciones del hotel, estableciendo permisos diferenciados según el rol del usuario. El sistema permitirá al gerente agregar nuevas habitaciones, visualizar su estado, editar su información y eliminarlas cuando sea necesario. Por su parte, el recepcionista podrá consultar y actualizar los datos de las habitaciones. Este control detallado contribuirá a una mejor gestión del inventario de alojamiento, facilitando la asignación y mantenimiento de las habitaciones del hotel.</li>
+        </li>En el subtema reservaciones tiene como función gestionar las reservaciones del hotel de manera eficiente. El sistema brindará acceso tanto al gerente como al recepcionista, quienes podrán agregar, eliminar, actualizar y visualizar los datos de cada reservación, con el propósito de mantener un control preciso de las reservas, optimizar la asignación de habitaciones y mejorar la experiencia del cliente en el proceso de alojamiento.</li>
       </ul>
     </section>
 
     <!-- USUARIOS DEL SISTEMA -->
     <section class="card">
-      <h2>Diagrama de base de datos </h2>
-      <img src="../Imagenes/MR_HABITACIONES.png" alt="Descripción de la imagen" width="800" height="300" style="display: block; margin: 0 auto;">
+      <h2>Codigó SQL para las tablas </h2>
     </section> 
 
 <section class="card">
-  <h2>Descripción de Pertinencia de la Arquitectura de la Base de Datos, en la tabla habitaciones</h2>
-  <p>
-    </li>En el subtema de administraciones de habitaciones del hotel, estableciendo permisos diferenciados según el rol del usuario. El sistema permitirá al gerente agregar nuevas habitaciones, visualizar su estado, editar su información y eliminarlas cuando sea necesario. Por su parte, el recepcionista podrá consultar y actualizar los datos de las habitaciones. Este control detallado contribuirá a una mejor gestión del inventario de alojamiento, facilitando la asignación y mantenimiento de las habitaciones del hotel.</li>
-  </p>
+  <h2>Creación de la base de datos</h2>
+  <pre><code>
+CREATE DATABASE InventarioDB;
+GO
+  </code></pre>
+</section>
 
-  <h3>Explicación de cada campo</h3>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th>Campo</th>
-      <th>Tipo de dato</th>
-      <th>Permitir valores nulos</th>
-      <th>Propósito y Justificación</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>id_habitacion</td>
-      <td>int (IDENTITY)</td>
-      <td>No</td>
-      <td>Identificador único para cada habitación. Clave primaria que permite diferenciar cada registro.</td>
-    </tr>
-    <tr>
-      <td>tipo_habitacion</td>
-      <td>varchar(50)</td>
-      <td>No</td>
-      <td>Define el tipo de habitación (Individual, Doble, Suite, etc.). Útil para clasificaciones y precios.</td>
-    </tr>
-    <tr>
-      <td>descripcion</td>
-      <td>text</td>
-      <td>Sí</td>
-      <td>Detalles adicionales sobre la habitación, su ubicación, servicios, decoración, etc.</td>
-    </tr>
-    <tr>
-      <td>capacidad_maxima</td>
-      <td>int</td>
-      <td>No</td>
-      <td>Indica la cantidad máxima de personas permitidas en la habitación.</td>
-    </tr>
-    <tr>
-      <td>fotografias</td>
-      <td>text</td>
-      <td>Sí</td>
-      <td>Ruta o enlace a la imagen representativa de la habitación. Ayuda visualmente al cliente.</td>
-    </tr>
-    <tr>
-      <td>estado_disponibilidad</td>
-      <td>varchar(20)</td>
-      <td>No</td>
-      <td>Estado actual de la habitación: Disponible, Ocupada, En limpieza o Mantenimiento.</td>
-    </tr>
-    <tr>
-      <td>precio_por_noche</td>
-      <td>decimal(10, 2)</td>
-      <td>No</td>
-      <td>Precio que se cobra por noche de alojamiento. Esencial para la facturación y reservas.</td>
-    </tr>
-    <tr>
-      <td>nota_adicional</td>
-      <td>text</td>
-      <td>Sí</td>
-      <td>Campo libre para observaciones, condiciones especiales o comentarios internos.</td>
-    </tr>
-  </tbody>
-</table>
+<section class="card">
+  <h2>Seleccionar la base de datos</h2>
+  <pre><code>
+USE InventarioDB;
+GO
+  </code></pre>
+</section>
 
+<section class="card">
+  <h2>Crear tabla "Habitaciones"</h2>
+  <pre><code>
+CREATE TABLE Reservaciones (
+    IdReservacion INT PRIMARY KEY IDENTITY(1,1),
+    Fecha DATE NOT NULL,
+    PrimerNombre NVARCHAR(50) NOT NULL,
+    SegundoNombre NVARCHAR(50),
+    ApellidoPaterno NVARCHAR(50) NOT NULL,
+    ApellidoMaterno NVARCHAR(50),
+    NumeroTelefono NVARCHAR(20) NOT NULL,
+    CorreoElectronico NVARCHAR(100),
+    NumeroHuespedes INT NOT NULL,
+    NumeroNoches INT NOT NULL,
+    CheckIn DATETIME NOT NULL,
+    CheckOut DATETIME NOT NULL,
+    IdHabitacion INT NOT NULL,
+    IdServicio INT,
+    IdEstacionamiento INT);
+  </code></pre>
+</section>
 
+<section class="card">
+  <h2>Crear la relación reservaciones con habitaciones</h2>
+  <pre><code>
+CREATE TABLE Reservaciones (
+-- Agregar llave foránea para la habitación
+ALTER TABLE Reservaciones
+ADD CONSTRAINT FK_Reservaciones_Habitacion
+FOREIGN KEY (IdHabitacion) REFERENCES Habitacion(id_habitacion);
+  </code></pre>
+</section>
 
+<section class="card">
+  <h2>Crear la relación reservaciones con estacionamiento</h2>
+  <pre><code>
+-- Agregar llave foránea para el estacionamiento
+ALTER TABLE Reservaciones
+ADD CONSTRAINT FK_Reservaciones_Estacionamiento
+FOREIGN KEY (IdEstacionamiento) REFERENCES Estacionamientos(IdEstacionamiento);
+  </code></pre>
+</section>
+
+<section class="card">
+  <h2>Crear la relación reservaciones con servicios</h2>
+  <pre><code>
+-- Agregar llave foránea para el servicio
+ALTER TABLE Reservaciones
+ADD CONSTRAINT FK_Reservaciones_Servicio
+FOREIGN KEY (IdServicio) REFERENCES Servicios(IdServicio);
+  </code></pre>
+</section>
     <!-- VOLVER ARRIBA -->
   </main>
 
